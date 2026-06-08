@@ -14,25 +14,42 @@
 
   .katex {
     font-size: 1.04em;
+    line-height: 1.35;
+    text-rendering: geometricPrecision;
   }
 }
 
 @layer components {
   .formula {
-    @apply text-slate-700;
+    @apply overflow-visible py-0.5 text-slate-700;
   }
 
   .formula-inline {
-    @apply inline-flex max-w-full align-middle;
+    @apply inline-flex max-w-full items-center align-middle leading-normal;
   }
 
   .formula-display {
     @apply my-2 flex w-full justify-center overflow-x-auto;
+  }
+
+  .formula .katex-html {
+    @apply overflow-visible;
+  }
+
+  .formula .katex .vlist-t {
+    vertical-align: -0.08em;
   }
 }
 
 @layer components {
   .card-surface {
     @apply rounded-[2rem] border border-white/70 bg-white/95 shadow-card backdrop-blur;
+  }
+
+  .card-page-content {
+    width: 111.111%;
+    height: 111.111%;
+    transform: scale(0.9);
+    transform-origin: top left;
   }
 }
