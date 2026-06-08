@@ -13,41 +13,16 @@ import {
 
 function Tag({ children, tone = "sky" }) {
   const tones = {
-    sky: "border-sky-100/80 bg-white/64 text-sky-600",
-    teal: "border-teal-100/80 bg-white/64 text-teal-600",
-    orange: "border-orange-100/80 bg-white/64 text-orange-600",
-    violet: "border-violet-100/80 bg-white/64 text-violet-600",
+    sky: "border-sky-100 bg-sky-50 text-sky-600",
+    teal: "border-teal-100 bg-teal-50 text-teal-600",
+    orange: "border-orange-100 bg-orange-50 text-orange-600",
+    violet: "border-violet-100 bg-violet-50 text-violet-600",
   };
 
   return (
-    <span className={`inline-flex h-6 items-center rounded-full border px-2.5 text-[11px] font-bold leading-none ${tones[tone] || tones.sky}`}>
-      {children}
+    <span className={`inline-flex h-8 items-center justify-center rounded-full border px-4 text-sm font-bold leading-none ${tones[tone] || tones.sky}`}>
+      <span className="tag-text">{children}</span>
     </span>
-  );
-}
-
-function CardMeta({ block, card }) {
-  const items = [block.stage, block.category, ...card.tags];
-
-  return (
-    <div className="mb-4 rounded-[1.25rem] border border-sky-100/70 bg-white/64 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-      <div className="flex flex-wrap gap-1.5">
-        {items.map((item, index) => (
-          <span
-            className={`inline-flex h-6 items-center rounded-full px-2.5 text-[11px] font-black leading-none ${
-              index === 0
-                ? "bg-sky-50 text-sky-600"
-                : index === 1
-                  ? "bg-teal-50 text-teal-600"
-                  : "bg-slate-50 text-slate-500"
-            }`}
-            key={`${item}-${index}`}
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
   );
 }
 
@@ -76,8 +51,8 @@ function PointBlock({ point, index }) {
         <div className="min-w-0">
           <div className="mb-2 flex flex-wrap items-center gap-2">
             <Tag tone="orange">{point.label}</Tag>
-            <span className="inline-flex h-6 items-center rounded-full border border-slate-100 bg-white/70 px-2.5 text-[11px] font-bold leading-none text-slate-400">
-              模块 {index + 1}
+            <span className="inline-flex h-8 items-center justify-center rounded-full border border-slate-100 bg-slate-50 px-4 text-sm font-bold leading-none text-slate-400">
+              <span className="tag-text">模块 {index + 1}</span>
             </span>
           </div>
           <h3 className="text-xl font-black leading-snug text-slate-700">{point.title}</h3>
@@ -187,7 +162,15 @@ export function KnowledgeImageCard({ block, card, index, total, registerCardRef,
       <article ref={registerCardRef(card.id)} className="card-surface aspect-[9/16] overflow-hidden">
         <div className="card-page-content flex h-full flex-col">
           <div className="shrink-0 bg-gradient-to-br from-sky-50 via-white to-teal-50 p-5">
-            <CardMeta block={block} card={card} />
+            <div className="mb-4 flex flex-wrap gap-2">
+              <Tag>{block.stage}</Tag>
+              <Tag tone="teal">{block.category}</Tag>
+              {card.tags.map((tag) => (
+                <Tag key={tag} tone="violet">
+                  {tag}
+                </Tag>
+              ))}
+            </div>
 
             <div className="rounded-[1.75rem] border border-white/90 bg-white/80 p-4 shadow-soft">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-400">{block.title}</p>

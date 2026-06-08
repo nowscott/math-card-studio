@@ -52,4 +52,9 @@
     transform: scale(0.9);
     transform-origin: top left;
   }
+
+  .tag-text {
+    display: inline-block;
+    transform: translateY(-0.06em);
+  }
 }
