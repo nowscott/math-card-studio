@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-100 text-slate-800 antialiased;
+  }
+
+  math {
+    font-family: "Times New Roman", "Cambria Math", serif;
+    font-size: 1.05em;
+  }
+
+  .katex {
+    font-size: 1.04em;
+  }
+}
+
+@layer components {
+  .formula {
+    @apply text-slate-700;
+  }
+
+  .formula-inline {
+    @apply inline-flex max-w-full align-middle;
+  }
+
+  .formula-display {
+    @apply my-2 flex w-full justify-center overflow-x-auto;
+  }
+}
+
+@layer components {
+  .card-surface {
+    @apply rounded-[2rem] border border-white/70 bg-white/95 shadow-card backdrop-blur;
+  }
+}
