@@ -2,6 +2,8 @@
 
 面向初高中数学教研场景的知识点卡片图片生成器。
 
+[在线演示](https://math-card-studio.vercel.app) · [GitHub 仓库](https://github.com/nowscott/math-card-studio)
+
 这是一个用于生成初高中数学知识点卡片图片的 React + Tailwind CSS 项目。项目采用“知识板块归档”的工作流：
 
 - 每个知识板块是一条归档记录
